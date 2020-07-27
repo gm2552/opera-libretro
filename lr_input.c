@@ -15,7 +15,15 @@ uint8_t
 poll_joypad(const int port_,
             const int id_)
 {
-  return retro_input_state_cb(port_,RETRO_DEVICE_JOYPAD,0,id_);
+
+  uint8_t state = retro_input_state_cb(port_,RETRO_DEVICE_JOYPAD,0,id_);
+  if (port_ == 0)
+  {
+    
+    //retro_log_printf_cb(RETRO_LOG_INFO,"[Opera]: Joypad state in port %d and id %d, %d\n", port_, id_, state);	
+  }
+
+  return state;
 }
 
 static
